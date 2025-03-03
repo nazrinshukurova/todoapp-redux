@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem, toggleTask } from "../store/actions";
 import "./ToDoList.css";
+import ellipse from "../assets/images/image.png";
+import dogAndBoy from "../assets/images/image2.png";
 
 const ToDoList = () => {
   const [task, setTask] = useState("");
@@ -30,71 +32,76 @@ const ToDoList = () => {
     totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
   return (
-    <div className="list-container">
-      <h2>To-Do List</h2>
+    <div className="todo-page">
+      <img src={ellipse} className="ellipse"></img>
+      <div className="section-main">
+        <div>
+          <img src={dogAndBoy} className="dogAndBoy"></img>
+        </div>
+        <div className="list-container">
+          <div className="progress-container">
+            <svg width="100" height="100">
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                stroke="#ddd"
+                strokeWidth="10"
+                fill="none"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                stroke="#55847A"
+                strokeWidth="10"
+                fill="none"
+                strokeDasharray="251.2"
+                strokeDashoffset={251.2 - (251.2 * completionPercentage) / 100}
+                strokeLinecap="round"
+                transform="rotate(-90 50 50)"
+              />
+            </svg>
+            <span className="progress-text">
+              {Math.round(completionPercentage)}%
+            </span>
+          </div>
 
-      {/* Progress Circle */}
-      <div className="progress-container">
-        <svg width="100" height="100">
-          <circle
-            cx="50"
-            cy="50"
-            r="40"
-            stroke="#ddd"
-            strokeWidth="10"
-            fill="none"
-          />
-          <circle
-            cx="50"
-            cy="50"
-            r="40"
-            stroke="green"
-            strokeWidth="10"
-            fill="none"
-            strokeDasharray="251.2"
-            strokeDashoffset={251.2 - (251.2 * completionPercentage) / 100}
-            strokeLinecap="round"
-            transform="rotate(-90 50 50)"
-          />
-        </svg>
-        <span className="progress-text">
-          {Math.round(completionPercentage)}%
-        </span>
-      </div>
+          <div className="list-box">
+            <input
+              className="task-box"
+              type="text"
+              value={task}
+              onChange={(e) => setTask(e.target.value)}
+              placeholder="Add a task"
+            />
+            <button className="add-button" onClick={handleAddItem}>
+              ADD
+            </button>
 
-      <div className="list-box">
-        <input
-          className="task-box"
-          type="text"
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-          placeholder="Add a task"
-        />
-        <button className="add-button" onClick={handleAddItem}>
-          Add
-        </button>
-
-        <ul>
-          {tasks.map((task) => (
-            <li key={task.id} className="task-item">
-              <span
-                onClick={() => toggleItem(task.id)}
-                style={{
-                  textDecoration: task.completed ? "line-through" : "none",
-                  cursor: "pointer",
-                }}
-              >
-                {task.text}
-              </span>
-              <button
-                className="remove-button"
-                onClick={() => handleRemoveItem(task.id)}
-              >
-                Remove
-              </button>
-            </li>
-          ))}
-        </ul>
+            <ul>
+              {tasks.map((task) => (
+                <li key={task.id} className="task-item">
+                  <span
+                    onClick={() => toggleItem(task.id)}
+                    style={{
+                      textDecoration: task.completed ? "line-through" : "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {task.text}
+                  </span>
+                  <button
+                    className="remove-button"
+                    onClick={() => handleRemoveItem(task.id)}
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

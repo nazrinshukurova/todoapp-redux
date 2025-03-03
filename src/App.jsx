@@ -3,8 +3,7 @@ import TodDoList from "./components/TodDoList";
 
 const App = () => {
   return (
-    <div>
-      <h1>Redux To Do App</h1>
+    <div className="container">
       <TodDoList/>
     </div>
   );
