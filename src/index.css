@@ -1,0 +1,56 @@
+.list-container {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .progress-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+  
+  .progress-container svg {
+    display: block;
+  }
+  
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+  }
+  
+  .list-box {
+    margin-top: 20px;
+  }
+  
+  .task-box {
+    width: 70%;
+    padding: 5px;
+  }
+  
+  .add-button {
+    padding: 6px 10px;
+    background: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .task-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .remove-button {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
