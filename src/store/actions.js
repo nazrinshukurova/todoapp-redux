@@ -1,6 +1,5 @@
 // 4. **Task**: Create a basic action to add an item to a list.
 
-
 export const addItem = (task) => {
   return {
     type: "ADD_TASK",
@@ -15,9 +14,17 @@ export const removeItem = (id) => {
   };
 };
 
+export const editItem = (id,newText) => {
+  return {
+    type: "EDIT_TASK",
+    payload: {id,newText},
+  };
+};
+
 export const toggleTask = (id) => {
   return {
     type: "TOGGLE_TASK",
     payload: id,
   };
 };
+
